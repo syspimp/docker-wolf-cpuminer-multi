@@ -29,5 +29,9 @@ RUN set -x \
     && rm -r wolf9466-cpuminer-multi \
     && apt-get -qq --auto-remove purge $buildDeps
 
-ENTRYPOINT ["minerd"]
-CMD ["-a", "cryptonight", "-o", "stratum+tcp://mine.moneropool.com:3333", "-u", "49TfoHGd6apXxNQTSHrMBq891vH6JiHmZHbz5Vx36nLRbz6WgcJunTtgcxnoG6snKFeGhAJB5LjyAEnvhBgCs5MtEgML3LU", "-p", "x"]
+#ENTRYPOINT ["minerd"]
+#CMD ["-a", "cryptonight", "-o", "stratum+tcp://mine.moneropool.com:3333", "-u", "49TfoHGd6apXxNQTSHrMBq891vH6JiHmZHbz5Vx36nLRbz6WgcJunTtgcxnoG6snKFeGhAJB5LjyAEnvhBgCs5MtEgML3LU", "-p", "x"]
+COPY multipool.sh /usr/local/bin/multipool.sh
+RUN chmod +x /usr/local/bin/multipool.sh
+ENTRYPOINT ["multipool.sh"]
+CMD ["-p","stratum+tcp://us-east.multipool.us:7777","-u","multipimpin.worker30"]
