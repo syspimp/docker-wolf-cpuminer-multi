@@ -1,8 +1,8 @@
-#!/bin/bash -x
-project="redhat-lab" 
+#!/bin/bash
+project="redhat-lab"
 ose_user="admin"
 ose_pass="redhat123"
-container="cpuminer-multipool"
+container="etcd-container"
 docker build --no-cache -t $container .
 oc login -u $ose_user -p $ose_pass
 id=$(docker images|grep ^$container|awk '{print $3}')
