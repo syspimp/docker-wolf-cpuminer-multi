@@ -11,4 +11,4 @@ id=$(docker images|grep ^$container|awk '{print $3}')
 token=$(oc whoami -t)
 docker login -u $ose_user -p $token ${server}:5000
 docker tag $container ${server}:5000/${project}/${container}
-docker push ${project}:5000/${project}/${container}
+docker push ${server}:5000/${project}/${container}
